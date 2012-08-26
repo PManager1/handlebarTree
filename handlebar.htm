@@ -24,14 +24,14 @@
                     <th>Email</th>
             </thead>
             <tbody>
-                
-                {{#users}}
+                 
+                {{#people}}    //{{#users}}
                 <tr>
                     <td>{{username}}</td>
                     <td>{{firstName}} {{lastName}}</td>
                     <td>{{email}}</td>
                 </tr>
-                {{/users}}
+                {{/people}}        //{{#users}}
             </tbody>
         </table>
     </script>
@@ -41,15 +41,26 @@
     
     $(document).ready(function() {
         
-        var source   = document.getElementById("some-template").innerHTML;
+        var source   = document.getElementById("some-template").innerHTML;  
+
+        //console.log("source = ", source);
+
+
         var template = Handlebars.compile(source);
         var data = { "users": [
               {username: "alan", firstName: "Alan", lastName: "Johnson", email: "alan@test.com" },
               {username: "allison", firstName: "Allison", lastName: "House", email: "allison@test.com" },
               {username: "ryan", firstName: "Ryan", lastName: "Carson", email: "ryan@test.com" }
-            ]};
+            ], 
+            "people": [
+              {username: "palan", firstName: "Alan", lastName: "Johnson", email: "alan@test.com" },
+              {username: "pallison", firstName: "Allison", lastName: "House", email: "allison@test.com" },
+              {username: "pryan", firstName: "Ryan", lastName: "Carson", email: "ryan@test.com" }
+            ]
+
+        };
         
-  $("#content-placeholder").html(template(data));
+          $("#content-placeholder").html(template(data));
 
 
 
